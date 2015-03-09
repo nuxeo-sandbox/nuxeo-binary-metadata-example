@@ -1,0 +1,10 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Manifest-Version: 1.0
+Bundle-Name: nuxeo-binary-metadata-example
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: Nuxeo
+Bundle-Version: 1.0
+Bundle-ManifestVersion: 2
+Nuxeo-Component: OSGI-INF/binary-metadata-example-contrib.xml
+Bundle-SymbolicName: nuxeo-binary-metadata-example

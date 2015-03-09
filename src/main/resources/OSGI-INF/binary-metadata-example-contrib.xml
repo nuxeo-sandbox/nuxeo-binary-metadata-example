@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="org.nuxeo.binary.metadata.example">
+
+  <extension point="schema" target="org.nuxeo.ecm.core.schema.TypeService">
+    <schema name="photoshop" prefix="photoshop" src="schemas/photoshop.xsd" />
+  </extension>
+
+  <extension point="doctype" target="org.nuxeo.ecm.core.schema.TypeService">
+    <facet name="Photoshop">
+      <schema name="photoshop" />
+    </facet>
+  </extension>
+
+  <extension target="org.nuxeo.binary.metadata" point="metadataMappings">
+    <metadataMapping id="exiftoolMapping" processor="exifTool" blobXPath="file:content">
+      <metadata name="Photoshop:ImageWidth" xpath="photoshop:width" />
+      <metadata name="Photoshop:ImageHeight" xpath="photoshop:height" />
+      <metadata name="Photoshop:NumChannels" xpath="photoshop:numChannels" />
+      <metadata name="Photoshop:PhotoshopThumbnail" xpath="photoshop:thumbnail" />
+    </metadataMapping>
+  </extension>
+
+  <extension target="org.nuxeo.binary.metadata" point="metadataRules">
+    <rule id="default" order="1" enabled="true" async="false">
+      <metadataMappings>
+        <metadataMapping-id>exiftoolMapping</metadataMapping-id>
+      </metadataMappings>
+      <filters>
+        <filter-id>hasPhotoshopFacet</filter-id>
+        <filter-id>isFile</filter-id>
+      </filters>
+    </rule>
+  </extension>
+
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService" point="filters">
+    <filter id="hasPhotoshopFacet">
+      <rule grant="true">
+        <facet>Photoshop</facet>
+      </rule>
+    </filter>
+    <filter id="isFile">
+      <rule grant="true">
+        <type>File</type>
+      </rule>
+    </filter>
+  </extension>
+</component>

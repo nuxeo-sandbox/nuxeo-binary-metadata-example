@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<xs:schema targetNamespace="http://project.nuxeo.com/example/xmp"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	
+	<xs:element name="width" type="xs:int" />
+	<xs:element name="height" type="xs:int" />
+	<xs:element name="numChannels" type="xs:int" />
+	<xs:element name="thumbnail" type="xs:string" />
+</xs:schema>
